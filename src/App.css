@@ -1,0 +1,41 @@
+/* App.css */
+body {
+  padding: 20px;
+}
+
+.App {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.App > section {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+/* Viewer Styling */
+section:first-of-type div {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Controller Button Styling */
+section:nth-of-type(2) button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+section:nth-of-type(2) button:hover {
+  background-color: #9be4ff;
+}
