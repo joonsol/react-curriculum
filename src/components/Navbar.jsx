@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
-const Navbar = (params) => {
-  return(
+import { Link } from "react-router-dom";
+const Navbar = (second) => {
+  return (
     <nav>
       <ul>
         <li>
@@ -14,6 +14,6 @@ const Navbar = (params) => {
         </li>
       </ul>
     </nav>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;

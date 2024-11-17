@@ -1,6 +1,8 @@
-const About = (params) => {
+const About = (second) => {
   return(
-    <div>About</div>
+    <div>
+      About
+    </div>
   )
-}
-export default About;
+ }
+ export default About
