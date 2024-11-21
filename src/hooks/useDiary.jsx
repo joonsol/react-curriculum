@@ -6,7 +6,6 @@ const useDiary = (id) => {
     const [curDiaryItem, setCurDiaryItem] = useState(null)
     const nav =useNavigate()
     useEffect(() => {
-
         const currentDiaryItem = data.find(
             (item) => String(item.id) === String(id))
         if (!currentDiaryItem) {

@@ -1,15 +1,12 @@
+import Header from "../components/Header";
+import Button from "../components/Button";
+import Editor from "../components/Editor";
+import { useNavigate } from "react-router-dom";
 import { useContext ,useState} from "react"
 import {DiaryDispatchContext} from "../App"
-import Editor from "../components/Editor"
-import Header from "../components/Header"
-import Button from "../components/Button"
-import { useNavigate } from "react-router-dom"
 const New = () => {
-
-
-
-  const {onCreate }=useContext(DiaryDispatchContext)
-  const nav =useNavigate()
+  const nav = useNavigate(); // 네비게이션 객체 생성
+  const {onCreate}=useContext(DiaryDispatchContext)
 
   const onSubmit =(input)=>{
     onCreate(
@@ -17,16 +14,18 @@ const New = () => {
       input.emotionId,
       input.content
     )
-    nav("/", {replace:true})
+    nav("/",{replace:true})
   }
-  return(
+  return (
     <div>
       <Header
-      leftChild={<Button text={"< 뒤로가기"} onClick={()=>nav(-1)}/>}
-      title="새 일기 쓰기"
+        title={"새일기 쓰기"}
+
+        leftChild={<Button text={"< 뒤로가기"} onClick={() => { nav(-1) }} />} // 뒤로가기 버튼
       />
-      <Editor onSubmit={onSubmit}/>
+       <Editor onSubmit={onSubmit}/>
     </div>
-  )
-}
-export default  New;
+  );
+};
+
+export default New;
