@@ -1,19 +1,16 @@
-
-import Editor from "../components/Editor"
-import Header from "../components/Header"
-import Button from "../components/Button"
-const New = () => {
-
-
+import Header from "../components/Header";
+import Button from "../components/Button";
+import Editor from "../components/Editor";
+const New = (params) => {
 
   return(
     <div>
-      <Header
-      leftChild={<Button text={"< 뒤로가기"}/>}
-      title="새 일기 쓰기"
-      />
-      <Editor onSubmit={onSubmit}/>
-    </div>
+    <Header
+      title={"새일기 쓰기"}
+      leftChild={<Button text={"< 뒤로가기"} />} // 뒤로가기 버튼
+    />
+    <Editor /> {/* 일기 작성 컴포넌트 */}
+  </div>
   )
 }
-export default  New;
+export default New

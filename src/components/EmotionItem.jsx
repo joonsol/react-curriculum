@@ -1,17 +1,17 @@
 import "./EmotionItem.css"
-import {getEmotionImage} from "../util/getEmotionImage"
+import { getEmotionImage } from "../util/getEmotionImage";
 const EmotionItem = ({
   emotionId,
-   emotionName,
-   isSelected,
-
-  }) => {
-  return(
-    <div
-    className={`EmotionItem ${isSelected? `EmotionItem_on_${emotionId}`:""}`}
-
+  emotionName,
+  isSelected,
+}) => {
+  return (
+    <div className={`EmotionItem ${isSelected ? `EmotionItem_on_${emotionId}` : ""
+      }`}
     >
-      <img src={getEmotionImage(emotionId)} alt={emotionName} />
+      <img
+        className="emotion_img"
+        src={getEmotionImage(emotionId)} alt={emotionName} />
       <div>{emotionName}</div>
     </div>
   )
