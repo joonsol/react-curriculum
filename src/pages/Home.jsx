@@ -1,18 +1,16 @@
-import Header from "../components/Header"
+import Header from "../components/Header";
 import Button from "../components/Button";
 import DiaryList from "../components/DiaryList";
 const Home = (params) => {
   return (
     <div>
-
-
       <Header
-        leftChild={<Button text="<" />}
-        title={"2024.11"}
-        rightChild={<Button text=">" />}
+        title={"2024.10"}                      // 현재 연도와 월을 표시
+        leftChild={<Button text={"<"} />}       // 왼쪽 버튼 ("<")
+        rightChild={<Button text={">"} />}      // 오른쪽 버튼 (">")
       />
       <DiaryList />
     </div>
   )
 }
-export default Home;
+export default Home
