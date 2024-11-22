@@ -1,15 +1,13 @@
-import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Viewer from '../components/Viewer';
+import { useParams, useNavigate } from "react-router-dom";
 import useDiary from "../hooks/useDiary";
 import { getStringedDate } from "../util/getStringedDate";
 const Diary = () => {
   const params = useParams(); // URL의 매개변수를 가져옴
-  console.log(params);
   const nav = useNavigate()
   const curDiaryItem = useDiary(params.id)
-
   if (!curDiaryItem) {
     return <div>데이터 로딩중!</div>
   }
@@ -18,7 +16,7 @@ const Diary = () => {
   return (
     <div>
       <Header
-           title={`${title} 기록`}
+        title={`${title}의 기록`}
         leftChild={<Button
           onClick={() => nav(-1)}
           text={"<뒤로가기"} />}
@@ -26,9 +24,8 @@ const Diary = () => {
           onClick={() => nav(`/edit/${params.id}`)}
           text={"수정하기"} />}
       />
-      <Viewer emotionId={emotionId} content={content}  />
+       <Viewer emotionId={emotionId} content={content} />
     </div>
-  );
-};
-
-export default Diary;
+  )
+}
+export default Diary

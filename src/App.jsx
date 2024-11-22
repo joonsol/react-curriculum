@@ -1,81 +1,69 @@
 
 import './App.css'
-import {
-  Routes,
-  Route,
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import New from './pages/New';
+import Edit from "./pages/Edit"
+import Diary from './pages/Diary';
+import Notfound from './pages/Notfound';
 
-} from 'react-router-dom'
-import { useReducer, useRef, createContext, useState, useEffect } from 'react';
-
-import Home from './pages/Home'
-import New from './pages/New'
-import Diary from './pages/Diary'
-import Edit from './pages/Edit'
-import Notfound from './pages/Notfound'
-
-
-
-
-
+import { useReducer, useRef, useEffect, useState, createContext } from 'react';
+const mockData = [
+  {
+    id: 1,                     // 일기의 고유 ID
+    createdDate: new Date("2024-11-22").getTime(), // 작성된 날짜(밀리초)
+    emotionId: 1,              // 감정 ID
+    content: "1번 일기 내용",   // 일기 내용
+  },
+  {
+    id: 2,
+    createdDate: new Date("2024-11-21").getTime(),
+    emotionId: 2,
+    content: "2번 일기 내용",
+  },
+  {
+    id: 3,
+    createdDate: new Date("2024-10-21").getTime(),
+    emotionId: 4,
+    content: "3번 일기 내용",
+  },
+];
 function reducer(state, action) {
-  let nextState;
   switch (action.type) {
     case "INIT":
       return action.data;
     case "CREATE":
-      nextState = [action.data, ...state]; // 새로운 일기를 앞에 추가
-      break;
+      return [action.data, ...state]; // 새로운 일기를 앞에 추가
     case "UPDATE":
-      nextState = state.map((item) =>
+      return state.map((item) =>
         String(item.id) === String(action.data.id) // ID가 일치하는지 확인
           ? action.data                          // ID가 일치하면 수정된 데이터로 대체
           : item                                 // 일치하지 않으면 기존 데이터 유지
       );
-      break
     case "DELETE":
-      nextState = state.filter(
+      return state.filter(
         (item) => String(item.id) !== String(action.id) // id가 일치하지 않는 항목만 유지
       );
-      break
     default:
       return state;
   }
-  localStorage.setItem("diary", JSON.stringify(nextState))
-  return nextState;
+  return state;
 }
-
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
 function App() {
-
-  const [data, dispatch] = useReducer(reducer, [])
-  const idRef = useRef(0);
+  const [data, dispatch] = useReducer(reducer, mockData);
+  const idRef = useRef(3); // 초기값을 3으로 설정
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const storedData = localStorage.getItem("diary");
-    if (!storedData) {
-      setIsLoading(true);
-      return;
-    }
-    const parsedData = JSON.parse(storedData);
-    if (!Array.isArray(parsedData)) {
-      setIsLoading(false);
-      return;
-    }
-    let maxId = 0;
-    parsedData.forEach((item) => {
-      if (Number(item.id) > maxId) {
-        maxId = item.id;
-      }
-    });
-    idRef.current = maxId + 1;
     dispatch({
       type: "INIT",
-      data: parsedData,
+      data: mockData,
     })
     setIsLoading(true)
   }, [])
+
   const onCreate = (createdDate, emotionId, content) => {
     dispatch({
       type: "CREATE",
@@ -87,7 +75,6 @@ function App() {
       }
     });
   };
-
   const onUpdate = (id, createdDate, emotionId, content) => {
     dispatch({
       type: "UPDATE",
@@ -99,36 +86,31 @@ function App() {
       }
     });
   };
-
   const onDelete = (id) => {
     dispatch({
       type: "DELETE",
       id
     });
   };
-
   if (!isLoading) {
     return <div>데이터를 불러오는 중입니다.</div>
   }
-  else {
+  return (
 
-    return (
-      <div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
 
-        <DiaryStateContext.Provider value={data}>
-          <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/edit/:id' element={<Edit />} />
-              <Route path='/new' element={<New />} />
-              <Route path='/diary/:id' element={<Diary />} />
-              <Route path='*' element={<Notfound />} />
-            </Routes>
-          </DiaryDispatchContext.Provider>
-        </DiaryStateContext.Provider>
-      </div>
-    )
-  }
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/diary/:id" element={<Diary />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
+
+  )
 }
 
 export default App

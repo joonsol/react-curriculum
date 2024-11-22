@@ -1,14 +1,13 @@
+import "./Editor.css"
 import Button from "./Button";
-import "./Editor.css";
 import EmotionItem from "./EmotionItem";
-import { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getStringedDate } from "../util/getStringedDate";
-import { emotionList } from "../util/constants";
+import { emotionList  } from "../util/constants";
 
-
-const Editor = ({ initData, onSubmit }) => {
-  const emotionId = 5; // 예시 감정 ID
+const Editor = ({ initData,onSubmit }) => {
+  // const emotionId = 5; // 예시 감정 ID 삭제
 
   useEffect(()=>{
     if(initData){
@@ -20,12 +19,15 @@ const Editor = ({ initData, onSubmit }) => {
     }
   },[initData])
 
-  const nav = useNavigate()
+
+  const nav = useNavigate();
   const [input, setInput] = useState({
     createdDate: new Date(), // 현재 날짜로 초기화
     emotionId: 3,            // 기본 감정 ID
     content: ""              // 초기 내용은 빈 문자열
   });
+
+
   const onChangeInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -40,11 +42,15 @@ const Editor = ({ initData, onSubmit }) => {
     });
   };
   const onSubmitButtonClick = () => {
-    onSubmit(input)
+    console.log("onSubmit called with input:", input); // 디버깅용 로그
+    if (onSubmit) {
+      onSubmit(input);
+    } else {
+      console.error("onSubmit 함수가 전달되지 않았습니다.");
+    }
   }
   return (
     <div className="Editor">
-      {/* 날짜 선택 섹션 */}
       <section className="date_section">
         <h4>오늘의 날짜</h4>
         <input
@@ -53,8 +59,6 @@ const Editor = ({ initData, onSubmit }) => {
           value={getStringedDate(input.createdDate)}
           type="date" /> {/* 날짜 입력 필드 */}
       </section>
-
-      {/* 감정 선택 섹션 */}
       <section className="emotion_section">
         <h4>오늘의 감정</h4>
         <div className="emotion_list_wrapper">
@@ -71,31 +75,28 @@ const Editor = ({ initData, onSubmit }) => {
               key={item.emotionId}
               {...item}
               isSelected={item.emotionId === input.emotionId}
-            />
-          ))}
+              />
+            ))}
+            {/*   input.emotionId 오타주의 */}
         </div>
       </section>
-
-      {/* 일기 작성 섹션 */}
       <section className="content_section">
         <h4>오늘의 일기</h4>
         <textarea
           name="content"
           value={input.content}
           onChange={onChangeInput}
-          placeholder="오늘은 어땠나요?" /> {/* 일기 작성 텍스트 필드 */}
+        placeholder="오늘은 어땠나요?" /> {/* 일기 작성 텍스트 필드 */}
       </section>
-
       {/* 버튼 섹션 */}
       <section className="button_section">
         <Button
           onClick={() => nav(-1)}
           text={"취소하기"}
         />
-        <Button text={"작성완료"} type={"POSITIVE"} onClick={onSubmitButtonClick} /> {/* 작성 완료 버튼 */}
+        <Button text={"작성완료"} type={"POSITIVE"} onClick={onSubmitButtonClick} />
       </section>
     </div>
-  );
-};
-
-export default Editor;
+  )
+}
+export default Editor

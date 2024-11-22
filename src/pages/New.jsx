@@ -4,9 +4,10 @@ import Editor from "../components/Editor";
 import { useNavigate } from "react-router-dom";
 import { useContext ,useState} from "react"
 import {DiaryDispatchContext} from "../App"
-const New = () => {
+const New = (params) => {
   const nav = useNavigate(); // 네비게이션 객체 생성
   const {onCreate}=useContext(DiaryDispatchContext)
+
 
   const onSubmit =(input)=>{
     onCreate(
@@ -16,16 +17,14 @@ const New = () => {
     )
     nav("/",{replace:true})
   }
-  return (
+  return(
     <div>
-      <Header
-        title={"새일기 쓰기"}
-
-        leftChild={<Button text={"< 뒤로가기"} onClick={() => { nav(-1) }} />} // 뒤로가기 버튼
-      />
-       <Editor onSubmit={onSubmit}/>
-    </div>
-  );
-};
-
-export default New;
+    <Header
+      title={"새일기 쓰기"}
+      leftChild={<Button text={"< 뒤로가기"} />} // 뒤로가기 버튼
+    />
+     <Editor onSubmit={onSubmit}/>
+  </div>
+  )
+}
+export default New

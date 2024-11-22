@@ -1,27 +1,17 @@
+
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
 import { useParams, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext,useState,useEffect} from "react";
 import { DiaryDispatchContext } from "../App";
-
 import useDiary from "../hooks/useDiary";
 const Edit = () => {
-  const params = useParams()
-  const nav = useNavigate()
-  const {onDelete,onUpdate}= useContext(DiaryDispatchContext)
+  const params = useParams(); // URL의 매개변수를 가져옴
+  const { onDelete, onUpdate } = useContext(DiaryDispatchContext)
+  const nav=useNavigate()
   const curDiaryItem = useDiary(params.id)
 
-
-
-  const onClickDelete = () => {
-    if(window.confirm("일기를 정말 삭제할까요?")){
-      onDelete(params.id)
-
-      nav("/",{replace:true})
-    }
-
-  }
   const onSubmit =(input)=>{
     if(window.confirm('일기를 정말 수정할까요?')){
       onUpdate(
@@ -33,20 +23,28 @@ const Edit = () => {
       nav("/",{replace:true})
     }
   }
-    // 수정된 부분: curDiaryItem이 null일 때 로딩 화면 출력
-    if (!curDiaryItem) {
-      return <div>데이터 로딩중입니다...</div>;
+
+
+  const onClickDelete = () => {
+    if (window.confirm("일기를 정말 삭제할까요?")) {
+      onDelete(params.id)
+
+      nav("/", { replace: true })
     }
 
-    return(
+  }
+  return (
     <div>
-       <Header
+      <Header
         title={"일기 수정하기"}
-        leftChild={<Button text={"< 뒤로가기"}  onClick={() => nav(-1)}  />}
-        rightChild={<Button text={" 삭제하기"}      onClick={onClickDelete} type={"NEGATIVE"} />
+        leftChild={<Button text={"< 뒤로가기"} onClick={() => nav(-1)} />}
+        rightChild={<Button text={" 삭제하기"}
+          type={"NEGATIVE"}
+          onClick={onClickDelete}
+        />
         } />
-        <Editor initData={curDiaryItem}  onSubmit={onSubmit}/>
+      <Editor initData={curDiaryItem} onSubmit={onSubmit}/>
     </div>
   )
 }
-export default Edit;
+export default Edit
