@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
-const New = () => {
-  const params = useParams()
+
+const New = (params) => {
   return(
-    <div>New 페이지</div>
+    <div>New</div>
   )
 }
-export default  New;
+export default New
