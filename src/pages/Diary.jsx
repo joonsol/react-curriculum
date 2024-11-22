@@ -1,4 +1,3 @@
-import "./Diary.css"
 import { useParams } from 'react-router-dom';
 const Diary = () => {
   const params = useParams(); // URL의 매개변수를 가져옴

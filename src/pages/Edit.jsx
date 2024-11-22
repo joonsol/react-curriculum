@@ -1,4 +1,4 @@
-import "./Edit.css"
+
 import { useParams } from 'react-router-dom';
 const Edit = () => {
   const params = useParams(); // URL의 매개변수를 가져옴
