@@ -1,42 +1,33 @@
 
 import './App.css'
-import {   Routes,
-  Route,
-  Link,
- } from 'react-router-dom'
-import Header from './components/Header'
-import Button from './components/Button'
-import Home from './pages/Home'
-import New from './pages/New'
-import Diary from './pages/Diary'
-import Edit from './pages/Edit'
-import Notfound from './pages/Notfound'
-import { getEmotionImage } from './util/getEmotionImage'
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import New from './pages/New';
+import Edit from "./pages/Edit"
+import Diary from './pages/Diary';
+import Notfound from './pages/Notfound';
+import Header from "./components/Header";
+import Button from "./components/Button";
 function App() {
 
   return (
     <div>
-      <Header
-      leftChild={<Button text="Left"/>}
-      title={"Header"}
-      rightChild={<Button text="right"/>}
-      />
 
-      <Button text="123" type="POSITIVE" onClick={()=>console.log('positive')}/>
-      <Button text="456" type="NEGATIVE" onClick={()=>console.log('negative')}/>
-      <div>
-        <img src={getEmotionImage(1)} alt="Emotion 1" />
-        <img src={getEmotionImage(2)} alt="Emotion 2" />
-        <img src={getEmotionImage(3)} alt="Emotion 3" />
-        <img src={getEmotionImage(4)} alt="Emotion 4" />
-        <img src={getEmotionImage(5)} alt="Emotion 5" />
-      </div>
+      <Header
+        title="Header"
+        leftChild={<Button text="Left" />}
+        rightChild={<Button text="Right" />}
+      />
+      {/* 다양한 스타일의 버튼 */}
+      <Button text="123" onClick={() => console.log("123번 버튼 클릭!")} />
+      <Button text="123" type="POSITIVE" onClick={() => console.log("POSITIVE 버튼 클릭!")} />
+      <Button text="123" type="NEGATIVE" onClick={() => console.log("NEGATIVE 버튼 클릭!")} />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/edit/:id' element={<Edit />} />
-        <Route path='/new/:id' element={<New />} />
-        <Route path='/diary/:id' element={<Diary />} />
-        <Route path='*' element={<Notfound />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/diary/:id" element={<Diary />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </div>
   )

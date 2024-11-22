@@ -1,6 +1,7 @@
+import "./Home.css"
 const Home = (params) => {
   return(
     <div>Home</div>
   )
 }
-export default  Home;
+export default Home
