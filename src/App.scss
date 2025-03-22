@@ -1,0 +1,51 @@
+// App.scss
+
+$bg-color: rgb(245, 245, 245);
+$border-color: rgb(240, 240, 240);
+$text-color: #333;
+$button-bg: #ffffff;
+$button-border: #ddd;
+$button-hover-bg: #9be4ff;
+
+body {
+  padding: 20px;
+}
+
+.App {
+  margin: 0 auto;
+  max-width: 600px;
+
+  > section {
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+
+    &:first-of-type {
+      div {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $text-color;
+      }
+    }
+
+    &:nth-of-type(2) {
+      button {
+        padding: 10px 15px;
+        margin: 5px;
+        font-size: 1rem;
+        color: $text-color;
+        background-color: $button-bg;
+        border: 1px solid $button-border;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $button-hover-bg;
+        }
+      }
+    }
+  }
+}
