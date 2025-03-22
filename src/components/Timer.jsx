@@ -3,7 +3,11 @@ import './Timer.css'
 import TimerDisplay from './TimerDisplay'
 import Button from './Button'
 
-    const buttons=[
+
+
+const Timer = () => {
+
+        const buttons=[
 
         {
             className:'start',
@@ -22,8 +26,6 @@ import Button from './Button'
         
     ]
     
-
-const Timer = () => {
   return (
     <div className='timer-container'>
         <TimerDisplay/>
