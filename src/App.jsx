@@ -4,6 +4,7 @@ function App() {
 
   return (
     <div>
+       <h1>타이머 앱</h1>
       <Timer/>
     </div>
   )
