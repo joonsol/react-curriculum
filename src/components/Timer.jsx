@@ -58,7 +58,7 @@ const Timer = () => {
                         key={index}
                         className={button.className}
                         value={button.value}
-
+                        onClick={button.onClick}
                     />
 
                 ))
