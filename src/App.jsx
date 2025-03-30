@@ -1,21 +1,24 @@
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Home from "./pages/Home";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
 function App() {
+
   return (
     <div>
-      <Navbar />
+
+      <Navbar/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact/:id" element={<Contact />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<h1>404 Page Not Found</h1>} />
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/contact/:id" element={<Contact/>}/>
+        <Route path="/*" element={<h1>404 Page Not Found</h1>}/>
       </Routes>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
