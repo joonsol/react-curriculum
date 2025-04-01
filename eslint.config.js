@@ -33,10 +33,6 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn"
-      ]
     },
   },
 ]
