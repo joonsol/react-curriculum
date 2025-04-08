@@ -19,7 +19,7 @@ import { useReducer, useRef, useContext ,useState} from 'react';
 function reducer(state, action) {
   let nextState;
   switch (action.type) {
-    case"INI":
+    case"INIT":
     return action.data;
     case "CREATE":
       nextState= [action.data, ...state]
