@@ -1,20 +1,13 @@
 
 import './App.css'
-import {
-  Routes,
-  Route,
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import New from './pages/New';
+import Edit from "./pages/Edit"
+import Diary from './pages/Diary';
+import Notfound from './pages/Notfound';
 
-} from 'react-router-dom'
-import Header from './components/Header'
-import Button from './components/Button'
-import Home from './pages/Home'
-import New from './pages/New'
-import Diary from './pages/Diary'
-import Edit from './pages/Edit'
-import Notfound from './pages/Notfound'
-import { createContext, useEffect } from 'react'
-import { useReducer, useRef, useContext ,useState} from 'react';
-
+import { useReducer, useRef, useEffect, useState, createContext } from 'react';
 
 function reducer(state, action) {
   let nextState;
@@ -43,12 +36,12 @@ return nextState
 }
 export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
-function App() {
 
-  const [data, dispatch] = useReducer(reducer, [])
-  const idRef = useRef(0)
- const [isLoading, setIsLoading] = useState(true);
-  localStorage.setItem('test','hello')
+
+function App() {
+  const [data, dispatch] = useReducer(reducer, []);
+  const idRef = useRef(0); // 초기값을 3으로 설정
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(()=>{
     const storedData= localStorage.getItem("diary");
@@ -80,7 +73,6 @@ function App() {
   },[])
 
 
-
   const onCreate = (createdDate, emotionId, content) => {
     dispatch({
       type: "CREATE",
@@ -89,52 +81,43 @@ function App() {
         createdDate,
         emotionId,
         content
-      },
-
-    })
-  }
+      }
+    });
+  };
   const onUpdate = (id, createdDate, emotionId, content) => {
     dispatch({
       type: "UPDATE",
       data: {
-        id: id,
-        createdDate,
-        emotionId,
-        content
-      },
-
-    })
-  }
+        id,           // 수정할 일기의 고유 ID
+        createdDate,  // 수정된 작성 날짜
+        emotionId,    // 수정된 감정 ID
+        content       // 수정된 일기 내용
+      }
+    });
+  };
   const onDelete = (id) => {
     dispatch({
       type: "DELETE",
-      id,
-    })
+      id
+    });
+  };
+  if (isLoading) {    return <div>데이터를 불러오는 중입니다.</div>
   }
-  if (isLoading) {
-    return <div>데이터 로딩중입니다 ...</div>;
-  }
-
   return (
-    <div>
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider
-          value={{
-            onCreate,
-            onUpdate,
-            onDelete,
-          }}
-        >
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/edit/:id' element={<Edit />} />
-            <Route path='/new' element={<New />} />
-            <Route path='/diary/:id' element={<Diary />} />
-            <Route path='*' element={<Notfound />} />
-          </Routes>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
-    </div>
+
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/diary/:id" element={<Diary />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
+
   )
 }
 
