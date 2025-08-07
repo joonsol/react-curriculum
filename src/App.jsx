@@ -1,13 +1,14 @@
 
 import './App.css'
-import SquareCalculator from './components/SquareCalculator'
-import SortableList from './components/SortableList'
+import UserList from './components/UserList'
+import PostForm from './components/PostForm'
 function App() {
 
   return (
     <div>
-      <SortableList/>
-      <SquareCalculator />
+      <PostForm/>
+      <UserList/>
+
     </div>
   )
 }
