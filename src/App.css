@@ -1,8 +1,51 @@
-/* src/App.css */
-.app {
-  max-width: 720px;
-  margin: 40px auto;
-  padding: 0 16px;
-  font-family: system-ui, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ font-family: "Noto Sans KR", sans-serif;
 }
 
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #505050;
+}
+section {
+    padding: 100px 20px;
+    max-width: 1440px;
+    margin: auto;
+}
+h1 {
+ font-family: "Montserrat", sans-serif;
+ font-weight: 900;
+ text-transform: uppercase;
+ font-size: 80px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.list li{
+  padding: 10px;
+  background-color: #eee;
+  cursor: pointer;
+  transition: all .2s;
+}
+.list li a{
+  display: block;
+  /* transition: all .2s; */
+  height: 100%;
+}
+.list li:hover{
+  color: #fff;
+  background-color: #505050;
+}
+
+.list li:hover a{
+  color: #fff;
+}

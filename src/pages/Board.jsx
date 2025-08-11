@@ -8,16 +8,16 @@ const Board = () => {
 ];
 
   return (
-    <div>
-      <h1>게시글</h1>
-        <ul>
+    <section>
+      <h1>Board</h1>
+        <ul className='list'>
         {dummy.map(p => (
           <li key={p.id}>
-            <Link to={`/board/${p.id}`}>{p.title}</Link>
+            <Link to={`/board/${p.id}`}>{p.id} * {p.title}</Link>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 

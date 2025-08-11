@@ -12,21 +12,21 @@ export const communityPosts = [
 
 const Community = () => {
   return (
-    <div>
-      <h2>
+    <section>
+      <h1>
       Community
 
-      </h2>
-      <ul>
+      </h1>
+      <ul className='list'>
         {communityPosts.map((b)=>(
           <li key={b.id}>
             <Link to={`/community/${b.id}`}>
-              {b.title}
+            {b.id} -  {b.title}
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 
