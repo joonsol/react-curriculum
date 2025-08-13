@@ -1,0 +1,27 @@
+footer {
+    background-color: #363636;
+    display: flex;
+    justify-content: space-between;
+    padding:  20px;
+}
+footer h2{
+    text-transform: uppercase;
+}
+footer *{
+    color: #fff;
+}
+.sns-list {
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+.sns-list li{
+    flex: 1;
+    width: 60px;
+
+}
+.sns-list span{
+    display: block;
+    font-size: 10px;
+    color: #666;
+}

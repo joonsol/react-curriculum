@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import BoardDetail from './pages/BoardDetail'
 import Community from './pages/Community'
 import CommunityDetail from './pages/CommunityDetail'
+import Footer from './components/Footer'
 function App() {
 
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path='/community/:id' element={<CommunityDetail />} />
         <Route path='*' element={<Notfound />} />
       </Routes>
-
+<Footer/>
 
     </div>
   )

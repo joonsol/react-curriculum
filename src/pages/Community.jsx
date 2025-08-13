@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import './Community.css'
 
 // src/mock/posts.js
 export const communityPosts = [
@@ -12,16 +13,21 @@ export const communityPosts = [
 
 const Community = () => {
   return (
-    <section>
+    <section className='Community'>
       <h1>
-      Community
+        Community
 
       </h1>
       <ul className='list'>
-        {communityPosts.map((b)=>(
+        {communityPosts.map((b) => (
           <li key={b.id}>
             <Link to={`/community/${b.id}`}>
-            {b.id} -  {b.title}
+              <div className='num'>
+                {b.id}
+              </div>
+              <div className='dsc'>
+                {b.title}
+              </div>
             </Link>
           </li>
         ))}
