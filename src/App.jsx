@@ -1,12 +1,13 @@
 
 import './App.css'
-import MyComponent from './components/MyComponent'
-
+import Display from './components/Display'
+import Buttons from './components/Buttons'
 function App() {
 
   return (
     <div>
-      <MyComponent />
+      <Display/>
+      <Buttons/>
     </div>
   )
 }
