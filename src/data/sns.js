@@ -1,6 +1,9 @@
 import icon1 from "../assets/icon1.png";
 import icon2 from "../assets/icon2.png";
 import icon3 from "../assets/icon3.png";
+import navPrev from '../assets/left.png'  // 원하시는 이미지로 교체
+import navNext from '../assets/right.png'
+
 
 export const snsLinks = [
     {

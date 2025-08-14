@@ -1,12 +1,9 @@
 import React from 'react'
-
+import HomeSlider from './HomeSlider'
 const Home = () => {
   return (
     <section>
-      <h1>
-      Home page
-
-      </h1>
+      <HomeSlider/>
       </section>
   )
 }
