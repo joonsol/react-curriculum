@@ -26,7 +26,7 @@ const AboutHero = () => {
                                 className="slide-bg"                         // 배경이미지 컨테이너
                                 role="img"                                   // 접근성: 이미지 역할
                                 aria-label={title}                    // 접근성: 대체 텍스트
-                               // 인라인 스타일로 배경이미지 적용
+                            // 인라인 스타일로 배경이미지 적용
                             />
 
                             <div className="slide-overlay" />              {/* 어둡게 오버레이(텍스트 가독성) */}
@@ -39,7 +39,7 @@ const AboutHero = () => {
                     return (
 
                         <SwiperSlide key={id} >
-                            <a    style={{ backgroundImage: `url(${img})` }} 
+                            <a style={{ backgroundImage: `url(${img})` }}
                                 href={href}
                                 className="slide-link"
                             >

@@ -1,8 +1,9 @@
 .about-slider-wrap .slider-wrap {
     max-width: 1000px;
-margin: auto;
+    margin: auto;
 }
-.about-slider-wrap .slide-link{
+
+.about-slider-wrap .slide-link {
     width: 300px;
     height: 300px;
     display: block;
@@ -14,10 +15,12 @@ margin: auto;
     background-repeat: no-repeat;
     margin: auto;
 }
-.about-slider-wrap .swiper-pagination{
+
+.about-slider-wrap .swiper-pagination {
     position: static;
 }
-.about-slider-wrap .slide-caption{
+
+.about-slider-wrap .slide-caption {
     position: absolute;
     bottom: 0;
     width: 100%;
