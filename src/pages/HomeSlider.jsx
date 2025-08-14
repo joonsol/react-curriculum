@@ -9,7 +9,7 @@ import { homeSlides } from '../data/homeSlide'               // 슬라이드 데
 
 const HomeSlider = () => {
   return (
-    <div className="slider-wrap">                            {/* 전체 슬라이더 래퍼(스타일용) */}
+    <div className="home-slider-wrap">                            {/* 전체 슬라이더 래퍼(스타일용) */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}   // 사용할 Swiper 모듈 등록
         navigation                                           // 좌우 화살표(기본 버튼) 활성화

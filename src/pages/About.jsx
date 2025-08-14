@@ -1,5 +1,6 @@
 import React from 'react'
-
+import AboutHero from './about/AboutHero';
+import './About.css'
 const About = () => {
    const infoList = [
     { id: 1, label: "회사명", desc: "React 학습 센터" },
@@ -10,11 +11,12 @@ const About = () => {
     { id: 6, label: "대표자", desc: "홍길동" } // 새 데이터 추가
   ];
   return (
-    <section>
+    <section className='about'>
       <h1>about Page</h1>
+      <AboutHero/>
       <ul className="list">
         {infoList.map(i=>(
-          <li>
+          <li key={i.id}>
             {i.id} - {i.label} -             {i.desc}
             </li>
         ))}
